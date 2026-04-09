@@ -1,0 +1,17 @@
+name: Notify Downstream Repository
+
+on:
+  push:
+    branches: [ main ]   # 或您需要监听的默认分支
+  # 也可以添加 release 等其他触发条件
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send repository dispatch event
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # 需要有对目标仓库的写入权限
+          repository: 您的用户名/本仓库名   # 例如: your-username/your-repo
+          event-type: content-updated      # 必须与 trigger-build.yml 中的 types 一致
