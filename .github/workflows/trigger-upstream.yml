@@ -13,5 +13,5 @@ jobs:
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}  # 需要有对目标仓库的写入权限
-          repository: ElliotSebastian/Blog-Main  # 例如: your-username/your-repo
+          repository: ElliotSebastian/Blog-Content  # 例如: your-username/your-repo
           event-type: content-updated      # 必须与 trigger-build.yml 中的 types 一致
